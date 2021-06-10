@@ -14,9 +14,6 @@ contestants = [
   #Add stuff here when people start responding
 ]
 
-contestants += [
-  #See above, only with example-cont
-]
 
 contestants = [[x[0], timer(x[0], x[1]), timer(x[0], x[1])] for x in contestants
 scores = [0] * len(contestants)
@@ -31,9 +28,9 @@ for k in range(repeats):
   if "-s" or "--open-question" in sys.argv:
     print("Sorry, this feature hasn't been implemented ^yet.^ That\'s sad. :(")
     #Make sure to make it open the question in CGCC
- number_of_games = 100
+ number_of_games = 99
   for i in range(len(contestants)):
-    for j in range(i + 1)
+    for j in range(i + 1):
       contestant = contestants[i]
       opponent = contestants[j]
       print(f"{game}/{int(len(contestants) * (len(contestants) + 1) * repeats / 2)}", end="\r")

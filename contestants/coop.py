@@ -1,6 +1,6 @@
 #Example Contestant
-import random
 def strategy(is_new_game):
-  return random.random()
+  return 1
+
 def plan(opmove):
   pass

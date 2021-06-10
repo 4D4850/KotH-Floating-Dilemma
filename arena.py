@@ -4,31 +4,31 @@ import webbrowser
 from controller import Controller
 from timer import timer, times
 from random import randint
-import numpy
 
 from contestants import tit_for_tat
 from contestants import random
 
 contestants = [
-  ("Tit for Tat", tit_for_tat.strategy, tit_for_tat.plan),
+  ("Cooperator", coop.strategy, coop.plan),
   ("Random", random.strategy, random.plan),
 ]
 
 
-contestants = [[x[0], timer(x[0], x[1]), timer(x[0], x[1])] for x in contestants
+contestants = [[x[0], timer(x[0], x[1]), timer(x[0], x[1])] for x in contestants]
 scores = [0] * len(contestants)
 wins = [0] * len(contestants)
 
 game = 0
 repeats = 100
+score_array = [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0], [10, 0]]
 for k in range(repeats):
-  if "-i" or "--import-antigravity" in sys.argv:
+  if "-i" in sys.argv or "--import-antigravity" in sys.argv:
     print("Ooh! an undocumented feature!")
     webbrowser.open("https://xkcd.com/353/")
-  if "-s" or "--open-question" in sys.argv:
+  if "-s" in sys.argv or "--open-question" in sys.argv:
     print("Sorry, this feature hasn't been implemented ^yet.^ That\'s sad. :(")
     #Make sure to make it open the question in CGCC
- number_of_games = 99
+  number_of_games = 99
   for i in range(len(contestants)):
     for j in range(i + 1):
       contestant = contestants[i]
@@ -41,6 +41,10 @@ for k in range(repeats):
       scores[i] += result[0] / repeats
       scores[j] += result[1] / repeats
 
+      print(f"Contestants: {contestant[0]}, {opponent[0]}")
+
+      print(f"Scores: {scores[i]}, {scores[j]}")
+
       if contestant == opponent:
         continue
       if result[0] > result[1]:
@@ -50,7 +54,12 @@ for k in range(repeats):
       else:
         wins[i] += 0.5 / repeats
         wins[j] += 0.5 / repeats
-
+      for l in range(j + 2):
+        if i == l:
+          score_array[l][1] += scores[i]
+        elif j == l:
+          score_array[l][1] += scores[j]
+      print(score_array)
 ordered_score = sorted(zip(contestants, scores), key=lambda x: x[1], reverse=True)
 ordered_wins = sorted(zip(contestants, wins), key=lambda x: x[1], reverse=True)
 
@@ -64,7 +73,7 @@ def joint_rank(sorted_list, key):
   buffer = 0
   out = []
   for item in sorted_list:
-  score = key(item)
+    score = key(item)
     if score != last:
       rank += buffer + 1
       buffer = 0
@@ -75,19 +84,6 @@ def joint_rank(sorted_list, key):
   return out
 
 
-print("By score:")
-for (contestant, points), rank in joint_rank(ordered_score, key=lambda x: x[1]):
-    print(f"{rank}: {contestant[0]} with {round(points, 1)} points")
-    overall[contestant[0]] = rank
-
-print("\nBy wins:")
-for (contestant, wins), rank in joint_rank(ordered_wins, key=lambda x: x[1]):
-    print(f"{rank}: {contestant[0]} with {round(wins, 1)}/{len(contestants) - 1} wins")
-    overall[contestant[0]] += rank
-
-# Calculate combined
-ordered_overall = [(c, overall[c]) for c in sorted(overall.keys(), key=lambda x: overall[x])]
-
-print("\nCombined leaderboard (fewer pts = better):")
-for (contestant, score), rank in joint_rank(ordered_overall, key=lambda x: x[1]):
-    print(f"{rank}: {contestant}  ({score} pts)")
+print("By Score: \n")
+for i in range(10):
+  print(f"{contestants[i][0]}, {score_array[i][1]}")

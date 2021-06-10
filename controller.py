@@ -17,5 +17,5 @@ class Controller:
     for _  in range(numgames):
       self.play(0)
 
-    print("Results:" + self.points)
+    print(f"Results: {self.points}")
     return self.points

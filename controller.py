@@ -10,8 +10,8 @@ class Controller:
     b = self.strategy[1]
     self.points[0] += a * b * 2 + (1 - a) * b * 3 + (1 - a) * (1 - b)
     self.points[1] += a * b * 2 + a * (1 - b) * 3 + (1 - a) * (1 - b)
-    self.plan[0](player-2-move)
-    self.plan[1](player-1-move)
+    self.plan[0](b)
+    self.plan[1](a)
   def run(self, numgames):
     for _  in range(numgames):
       self.play()

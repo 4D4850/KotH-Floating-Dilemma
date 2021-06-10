@@ -6,12 +6,12 @@ from timer import timer, times
 from random import randint
 import numpy
 
-#from example-cont import
-
-#from contestants import
+from contestants import tit_for_tat
+from contestants import random
 
 contestants = [
-  #Add stuff here when people start responding
+  ("Tit for Tat", tit_for_tat.strategy, tit_for_tat.plan),
+  ("Random", random.strategy, random.plan),
 ]
 
 

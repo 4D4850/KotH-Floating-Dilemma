@@ -1,0 +1,20 @@
+class Controller:
+  def __init__(self, names, strategy, plan):
+    self.names = names
+    self.strategy = strategy
+    self.points = [0, 0]
+    self.plan = plan
+
+  def play(self)
+    a = self.strategy[0]
+    b = self.strategy[1]
+    self.points[0] += a * b * 2 + (1 - a) * b * 3 + (1 - a) * (1 - b)
+    self.points[1] += a * b * 2 + a * (1 - b) * 3 + (1 - a) * (1 - b)
+    self.plan[0](player-2-move)
+    self.plan[1](player-1-move)
+  def run(self, numgames):
+    for _  in range(numgames):
+      self.play()
+
+    print("Results:" + self.points)
+    return self.points

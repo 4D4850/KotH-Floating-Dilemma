@@ -87,5 +87,5 @@ def joint_rank(sorted_list, key):
 
 
 print("By Score: \n")
-for i in range(11):
+for i in range(len(contestants)):
   print(f"{contestants[i][0]}, {score_array[i][1]}")

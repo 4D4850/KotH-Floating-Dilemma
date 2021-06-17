@@ -40,3 +40,5 @@ def plan(opmove):
 ```
 
 Controller is at https://github.com/4D4850/KotH-Floating-Dilemma
+
+Feel free to make a pull request.

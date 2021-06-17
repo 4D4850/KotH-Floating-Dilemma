@@ -5,7 +5,7 @@ from controller import Controller
 from timer import timer, times
 from random import randint
 
-from contestants import tit_for_tat
+from contestants import coop
 from contestants import random
 
 contestants = [

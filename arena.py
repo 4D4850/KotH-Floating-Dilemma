@@ -21,7 +21,7 @@ wins = [0] * len(contestants)
 game = 0
 repeats = 100
 score_array = []
-for i in range(len(contestants) + 1)
+for i in range(len(contestants) + 1):
   score_array.append([i, 0])
 for k in range(repeats):
   if "-i" in sys.argv or "--import-antigravity" in sys.argv:

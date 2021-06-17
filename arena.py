@@ -20,7 +20,9 @@ wins = [0] * len(contestants)
 
 game = 0
 repeats = 100
-score_array = [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0], [8, 0], [9, 0], [10, 0]]
+score_array = []
+for i in range(len(contestants) + 1)
+  score_array.append([i, 0])
 for k in range(repeats):
   if "-i" in sys.argv or "--import-antigravity" in sys.argv:
     print("Ooh! an undocumented feature!")
@@ -85,5 +87,5 @@ def joint_rank(sorted_list, key):
 
 
 print("By Score: \n")
-for i in range(10):
+for i in range(11):
   print(f"{contestants[i][0]}, {score_array[i][1]}")

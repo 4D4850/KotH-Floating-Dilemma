@@ -1,6 +1,6 @@
 #Example Contestant
-def strategy(is_new_game):
+def strategy(is_new_game, store):
   return 1
 
-def plan(opmove):
+def plan(opmove, store):
   pass

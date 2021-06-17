@@ -12,8 +12,8 @@ class Controller:
     b = self.strategy[1](is_new_game, self.store)
     self.points[0] += a * b * 2 + (1 - a) * b * 3 + (1 - a) * (1 - b)
     self.points[1] += a * b * 2 + a * (1 - b) * 3 + (1 - a) * (1 - b)
-    self.plan[0](b, store)
-    self.plan[1](a, store)
+    self.plan[0](b, self.store)
+    self.plan[1](a, self.store)
   def run(self, numgames):
     self.play(1)
     for _  in range(numgames):

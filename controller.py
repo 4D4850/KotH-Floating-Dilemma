@@ -8,8 +8,8 @@ class Controller:
     }
 
   def play(self, is_new_game):
-    a = self.strategy[0](is_new_game, store)
-    b = self.strategy[1](is_new_game, store)
+    a = self.strategy[0](is_new_game, self.store)
+    b = self.strategy[1](is_new_game, self.store)
     self.points[0] += a * b * 2 + (1 - a) * b * 3 + (1 - a) * (1 - b)
     self.points[1] += a * b * 2 + a * (1 - b) * 3 + (1 - a) * (1 - b)
     self.plan[0](b, store)

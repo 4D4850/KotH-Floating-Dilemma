@@ -1,4 +1,6 @@
 def strategy(is_new_game, store):
+  if is_new_game:
+    store['moves'] = []
   if store and store['moves']:
     return store['moves'][-1]
   return .1

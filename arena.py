@@ -8,13 +8,13 @@ from random import randint
 from contestants import coop
 from contestants import random
 from contestants import helped
-from contestants import average
+from contestants import randalt
 
 contestants = [
   ("Cooperator", coop.strategy, coop.plan),
   ("Random", random.strategy, random.plan),
   ("Helped", helped.strategy, helped.plan),
-  ("Average", average.strategy, average.plan),
+  ("Random Alternator", randalt.strategy, randalt.plan),
 ]
 
 

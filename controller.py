@@ -18,6 +18,8 @@ class Controller:
     self.play(1)
     for _  in range(numgames):
       self.play(0)
-
+ 
+    self.store = {
+    }
     print(f"Results: {self.points}")
     return self.points

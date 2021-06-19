@@ -9,12 +9,14 @@ from contestants import coop
 from contestants import random
 from contestants import helped
 from contestants import randalt
+from contestants import tit_for_tat
 
 contestants = [
   ("Cooperator", coop.strategy, coop.plan),
   ("Random", random.strategy, random.plan),
   ("Helped", helped.strategy, helped.plan),
   ("Random Alternator", randalt.strategy, randalt.plan),
+  ("Tit for Tat", tit_for_tat.strategy, tit_for_tat.plan),
 ]
 
 

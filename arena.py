@@ -11,6 +11,11 @@ from contestants import helped
 from contestants import randalt
 from contestants import tit_for_tat
 
+
+def alt_sort(lst):
+  return sorted(lst, key=lambda x: x[1], reverse=True)
+
+
 contestants = [
   ("Cooperator", coop.strategy, coop.plan),
   ("Random", random.strategy, random.plan),
@@ -18,7 +23,6 @@ contestants = [
   ("Random Alternator", randalt.strategy, randalt.plan),
   ("Tit for Tat", tit_for_tat.strategy, tit_for_tat.plan),
 ]
-
 
 contestants = [[x[0], timer(x[0], x[1]), timer(x[0], x[1])] for x in contestants]
 scores = [0] * len(contestants)
@@ -43,7 +47,7 @@ for k in range(repeats):
       opponent = contestants[j]
       print(f"{game}/{int(len(contestants) * (len(contestants) + 1) * repeats / 2)}", end="\r")
       game += 1
-      ctrl = Controller((contestant[0], opponent[0]), (contestant[1], opponent[1]), (contestant[2], opponent[2]))
+      ctrl = Controller(*zip(contestant, opponent))
       result  = ctrl.run(number_of_games)
 
       scores[i] += result[0] / repeats
@@ -68,12 +72,12 @@ for k in range(repeats):
         elif j == l:
           score_array[l][1] += scores[j]
       print(score_array)
-ordered_score = sorted(zip(contestants, scores), key=lambda x: x[1], reverse=True)
-ordered_wins = sorted(zip(contestants, wins), key=lambda x: x[1], reverse=True)
+ordered_score = alt_sort(zip(contestants, scores))
+ordered_wins = alt_sort(zip(contestants, wins))
 
 overall = {}
 ordered_times = [[a, b] for a, b in times.items()]
-ordered_times = sorted(ordered_times, key=lambda x: x[1], reverse=True)
+ordered_times = alt_sort(ordered_times)
 
 def joint_rank(sorted_list, key):
   last = -1

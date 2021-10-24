@@ -20,7 +20,7 @@ contestants = [
 ]
 
 
-contestants = [[x[0], timer(x[0], x[1]), timer(x[0], x[1])] for x in contestants]
+contestants = [[x[0], timer(x[0], x[1]), timer(x[0], x[2])] for x in contestants]
 scores = [0] * len(contestants)
 wins = [0] * len(contestants)
 
